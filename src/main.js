@@ -3,8 +3,9 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
-import './assets/styles/reset.css' // 定义使用的样式
+import './assets/styles/reset.css' // 定义全局使用的样式
 import './assets/styles/border.css' // 解决部分移动端页面border 1像素显示问题
+import './assets/styles/iconfont.css' // 定义使用的图标库
 import fastClick from 'fastclick'
 
 // 解决部分浏览器点击响应延迟问题
