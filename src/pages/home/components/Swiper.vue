@@ -43,10 +43,10 @@ export default {
 .wrapper >>> .swiper-pagination-bullet-active
   background #eeeeee
 .wrapper
-  overflow hidden
-  width 100%
+  overflow hidden // 不显示超出的内容
+  width 100% // 父布局的100%
   height 0
-  padding-bottom 40%
+  padding-bottom 40% // 往下撑出来宽度的40%
   .swiper-img
     width 100%
     max-height 150px
