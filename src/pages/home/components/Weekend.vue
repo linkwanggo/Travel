@@ -1,9 +1,14 @@
 <template>
   <div>
-    <div class="title">周末去哪儿</div>
+    <div class="title">
+      <img class="title-img"
+           src="http://img1.qunarzz.com/piao/fusion/1711/89/ebc329f16c55bb02.png"
+           alt="周末去哪儿">
+      周末去哪儿
+    </div>
     <ul class="border-bottom">
       <li class="item"
-          v-for="item in recommondList"
+          v-for="item in list"
           :key="item.id">
         <a :href="item.path">
           <div class="item-img-wrapper">
@@ -23,24 +28,12 @@
 <script>
 export default {
   name: 'HomeWeekend',
+  props: {
+    list: Array
+  },
   data () {
     return {
-      recommondList: [
-        {
-          id: '0001',
-          title: '洛阳必游TOP10',
-          desc: '六朝古都，玩出千年历史尘埃',
-          imgUrl: 'http://img1.qunarzz.com/sight/source/1505/f9/6c5f9e716da18.jpg_r_640x214_7318f89b.jpg',
-          path: 'http://piao.qunar.com/touch/toSku.htm?skuId=598&skuName=焦作打卡&cat=from_area%3Dts_sku%26from_index%3D0%26from_value%3D%25E7%2584%25A6%25E4%25BD%259C%25E6%2589%2593%25E5%258D%25A1%26dist_city%3D%25E7%2584%25A6%25E4%25BD%259C'
-        },
-        {
-          id: '0002',
-          title: '城中碧玉万仙山',
-          desc: '人间仙境，世外桃源',
-          imgUrl: 'http://img1.qunarzz.com/sight/source/1811/d2/017059dd59b0ee.jpg_r_640x214_497664a4.jpg',
-          path: 'http://piao.qunar.com/touch/toSku.htm?skuId=703&skuName=城中碧玉万仙山&cat=from_area%3Dts_sku%26from_index%3D2%26from_value%3D%25E5%259F%258E%25E4%25B8%25AD%25E7%25A2%25A7%25E7%258E%2589%25E4%25B8%2587%25E4%25BB%2599%25E5%25B1%25B1%26dist_city%3D%25E7%2584%25A6%25E4%25BD%259C'
-        }
-      ]
+
     }
   }
 }
@@ -50,10 +43,15 @@ export default {
 @import '~@/assets/styles/mixins.styl'
 .title
   padding 0.24rem 0 0.26rem
-  background gray
-  margin-top 0.2rem
+  .title-img
+    display inline-block
+    overflow hidden
+    width 0.3rem
+    height 0.3rem
+    margin-left 0.2rem
 .item
   width 100%
+  padding-bottom 0.1rem
   .item-img-wrapper
     height 0
     width 100%
@@ -64,11 +62,14 @@ export default {
     .item-img-content
       width 100%
 .item-title
-  font-size 0.4rem
+  font-size 0.28rem
   color #000000
-  padding 0.2rem
+  padding 0.1rem
+  margin-left 0.2rem
   ellipsis()
 .item-desc
-  padding 0.2rem
+  font-size 0.15rem
+  padding 0.1rem
+  margin-left 0.2rem
   ellipsis()
 </style>

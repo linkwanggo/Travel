@@ -22,55 +22,11 @@
 <script>
 export default {
   name: 'HomeIcon',
+  props: {
+    list: Array
+  },
   data () {
     return {
-      iconList: [
-        {
-          id: '0001',
-          imgUrl: 'http://img1.qunarzz.com/piao/fusion/1803/95/f3dd6c383aeb3b02.png',
-          title: '景点门票'
-        },
-        {
-          id: '0002',
-          imgUrl: 'http://mp-piao-admincp.qunarzz.com/mp_piao_admin_mp_piao_admin/admin/20194/e98eea7ed037b04a5af0250ca8a1abd7.png',
-          title: '少林寺'
-        },
-        {
-          id: '0003',
-          imgUrl: 'http://mp-piao-admincp.qunarzz.com/mp_piao_admin_mp_piao_admin/admin/20196/c77aa5a455e750b2f43711b2aa7f7ce2.png',
-          title: '粽情端午'
-        },
-        {
-          id: '0004',
-          imgUrl: 'http://img1.qunarzz.com/piao/fusion/1803/95/8246f27355943202.png',
-          title: '郑州方特'
-        },
-        {
-          id: '0005',
-          imgUrl: 'http://img1.qunarzz.com/piao/fusion/1803/85/77241e9427222b02.png',
-          title: '郑州园博园'
-        },
-        {
-          id: '0006',
-          imgUrl: 'http://img1.qunarzz.com/piao/fusion/1803/b2/bfbc5d66e0ab5a02.png',
-          title: '冰雪世界'
-        },
-        {
-          id: '0007',
-          imgUrl: 'http://img1.qunarzz.com/piao/fusion/1803/fa/2548667cb6e902.png',
-          title: '郑州动物园'
-        },
-        {
-          id: '0008',
-          imgUrl: 'http://img1.qunarzz.com/piao/fusion/1803/e3/67df61427c8e1302.png',
-          title: '实时演出'
-        },
-        {
-          id: '0009',
-          imgUrl: 'http://img1.qunarzz.com/piao/fusion/1803/50/26ffa31b56646402.png',
-          title: '海洋馆'
-        }
-      ],
       swiperOption: {
 
       }
@@ -96,12 +52,15 @@ export default {
     //     })
     //     return pages
     //   }
+    iconList () {
+      let iconList = this.list
+      return iconList
+    },
     pages () {
       let pageSize = 8
       let pages = []
       this.iconList.forEach((item, index) => {
         let page = Math.floor(index / pageSize)
-        console.log(pages[page])
         if (!pages[page]) {
           pages[page] = []
         }

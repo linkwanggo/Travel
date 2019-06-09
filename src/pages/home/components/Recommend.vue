@@ -1,9 +1,14 @@
 <template>
   <div>
-    <div class="title">猜你喜欢</div>
-    <ul>
+    <div class="title">
+      <img class="title-img"
+           src="http://img1.qunarzz.com/piao/fusion/1711/89/ebc329f16c55bb02.png"
+           alt="猜你喜欢">
+      猜你喜欢
+    </div>
+    <ul class="like-list">
       <li class="item"
-          v-for="item in recommondList"
+          v-for="item in recommendList"
           :key="item.id">
         <a :href="item.path">
           <div class="item-img-wrapper">
@@ -13,7 +18,7 @@
           <div class="item-info">
             <p class="item-title">{{item.title}}</p>
             <p class="item-desc">{{item.desc}}</p>
-            <button class="item-button">查看详情</button>
+            <p class="item-address">{{item.address}}</p>
           </div>
         </a>
       </li>
@@ -24,24 +29,18 @@
 <script>
 export default {
   name: 'HomeRecommend',
+  props: {
+    list: Array
+  },
   data () {
     return {
-      recommondList: [
-        {
-          id: '0001',
-          title: '大连圣亚海洋世界',
-          desc: '浪漫大连首站，浪漫的海洋主题公园',
-          imgUrl: 'http://img1.qunarzz.com/sight/p0/1804/99/9992ca60e89a46bfa3.water.jpg_200x200_d8b18a42.jpg',
-          path: 'http://touch.piao.qunar.com/touch/detail.htm?id=1841319965&from=as_recommend_sight'
-        },
-        {
-          id: '0002',
-          title: '大连圣亚海洋世界2',
-          desc: '浪漫大连首站2，浪漫的海洋主题公园',
-          imgUrl: 'http://img1.qunarzz.com/sight/p0/1804/99/9992ca60e89a46bfa3.water.jpg_200x200_d8b18a42.jpg',
-          path: 'http://touch.piao.qunar.com/touch/detail.htm?id=1841319965&from=as_recommend_sight'
-        }
-      ]
+
+    }
+  },
+  computed: {
+    recommendList () {
+      let recommendList = this.list
+      return recommendList
     }
   }
 }
@@ -49,19 +48,27 @@ export default {
 
 <style lang="stylus" scoped>
 @import '~@/assets/styles/mixins.styl'
+.like-list
+  margin-left 0.24rem
 .title
   padding 0.24rem 0 0.26rem
-  background gray
   margin-top 0.2rem
+  .title-img
+    display inline-block
+    overflow hidden
+    width 0.3rem
+    height 0.3rem
+    margin-left 0.2rem
 .item
-  height 2.7rem
+  position relative
+  overflow hidden
+  padding 0.2rem 0
   .item-img-wrapper
-    height 2.5rem
-    width 2.5rem
-    display flex
+    background none !important
+    height 2rem
+    width 2rem
     overflow hidden
     float left
-    padding 0.1rem 0.1rem 0.1rem 0.1rem
     .item-img-content
       height 100%
       width 100%
@@ -69,17 +76,16 @@ export default {
   flex 1
   padding 0.1rem
   .item-title
-    font-size 0.4rem
+    font-size 0.32rem
     color #000000
     padding 0.2rem
     ellipsis()
   .item-desc
     padding 0.2rem
     ellipsis()
-  .item-button
-    margin-top 0.2rem
-    padding 0.2rem
-    border-radius 0.1rem
-    background #ff9300
-    color #ffffff
+  .item-address
+    font-size 0.2rem
+    float right
+    margin 0.3rem 0.5rem 0 0
+    color #212121
 </style>

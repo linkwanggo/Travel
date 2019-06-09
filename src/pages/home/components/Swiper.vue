@@ -1,8 +1,9 @@
 <template>
   <div class="wrapper">
-    <swiper :options="swiperOption">
+    <swiper :options="swiperOption"
+            v-if="showSwiper">
       <!-- slides -->
-      <swiper-slide v-for="item in swiperList"
+      <swiper-slide v-for="item in list"
                     :key="item.id">
         <img class="swiper-img"
              :src="item.imgUrl"
@@ -18,22 +19,21 @@
 <script>
 export default {
   name: 'HomeSwiper',
+  props: {
+    list: Array
+  },
   data () {
     return {
       swiperOption: {
         pagination: '.swiper-pagination',
         loop: true
-      },
-      swiperList: [
-        {
-          id: '0001',
-          imgUrl: 'https://himg1.qunarzz.com/imgs/201812/24/C._M0DCiiL7y2_NvGRi480.jpg'
-        },
-        {
-          id: '0002',
-          imgUrl: 'https://himg3.qunarzz.com/imgs/201812/12/C._M0DCii9aSXxraeHi480.jpg'
-        }
-      ]
+        // autoplay: true
+      }
+    }
+  },
+  computed: {
+    showSwiper () {
+      return this.list.length > 0
     }
   }
 }
@@ -46,7 +46,7 @@ export default {
   overflow hidden // 不显示超出的内容
   width 100% // 父布局的100%
   height 0
-  padding-bottom 40% // 往下撑出来宽度的40%
+  padding-bottom 32% // 往下撑出来宽度的40%
   .swiper-img
     width 100%
     max-height 150px
